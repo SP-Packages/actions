@@ -41,3 +41,6 @@ runs:
       env:
         DEV_DEPENDENCIES: ${{ inputs.DEV_DEPENDENCIES }}
       shell: bash
+
+    - name: Run Build Script
+      run: npm run build
