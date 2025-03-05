@@ -1,0 +1,43 @@
+name: Setup Environment
+
+inputs:
+  DEV_DEPENDENCIES:
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0 
+
+    - name: Set Up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 21
+        cache: "npm"
+
+    - name: Get NPM Cache directory
+      id: npm-cache
+      run: echo "dir=$(npm config get cache)" >> $GITHUB_OUTPUT
+      shell: bash
+
+    - name: Cache NPM Dependencies
+      uses: actions/cache@v4
+      with:
+        path: ${{ steps.npm-cache.outputs.dir }}
+        key: ${{ runner.os }}-npm-${{ hashFiles('package.json', 'package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-npm-
+
+    - name: Install Dependencies
+      run: |
+        if [ "$DEV_DEPENDENCIES" = "true" ]; then
+          npm install
+        else
+          npm install --production
+        fi
+      env:
+        DEV_DEPENDENCIES: ${{ inputs.DEV_DEPENDENCIES }}
+      shell: bash

@@ -1,0 +1,33 @@
+name: Code Quality
+
+on:
+  workflow_call:
+
+jobs:
+  code-quality:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set Up Environment
+        uses: SP-Packages/actions/.github/actions/setup-environment@main
+        with:
+          DEV_DEPENDENCIES: true
+
+      - name: Run ESLint
+        run: npx eslint . --max-warnings=0
+        continue-on-error: true
+
+      - name: Run Prettier
+        run: npx prettier --check .
+        continue-on-error: true
+
+      - name: Run cspell (spell-check)
+        run: npx cspell "**/*.{ts,js,json,md}"
+        continue-on-error: true
+
+      - name: Run TypeScript
+        run: npx tsc --noEmit
+        continue-on-error: true
+
+      - name: Run Commitlint
+        run: npx commitlint --from=origin/main --to=HEAD --verbose
+        continue-on-error: true

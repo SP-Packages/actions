@@ -1,0 +1,27 @@
+name: Semantic Release
+
+on:
+  workflow_call:
+    inputs:
+      DRY_RUN:
+        type: boolean
+        required: false
+        default: false
+
+    secrets:
+      GH_TOKEN:
+        required: true
+
+jobs:
+  semantic-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set Up Environment
+        uses: SP-Packages/actions/.github/actions/setup-environment@main
+        with:
+          DEV_DEPENDENCIES: true
+
+      - name: Run Semantic Release
+        run: npx semantic-release --dry-run=${{ inputs.DRY_RUN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
