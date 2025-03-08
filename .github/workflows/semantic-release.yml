@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Set Up Environment
-        uses: SP-Packages/actions/.github/actions/setup-environment@new-v1
+        uses: SP-Packages/actions/.github/actions/setup-environment@main
         with:
           DEV_DEPENDENCIES: true
 
