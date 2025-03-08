@@ -11,6 +11,8 @@ on:
     secrets:
       GH_TOKEN:
         required: true
+      NPM_TOKEN:
+        required: true
 
 jobs:
   semantic-release:
@@ -25,3 +27,4 @@ jobs:
         run: npx semantic-release --dry-run=${{ inputs.DRY_RUN }}
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
