@@ -44,3 +44,4 @@ runs:
 
     - name: Run Build Script
       run: npm run build
+      shell: bash
