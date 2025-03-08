@@ -10,36 +10,35 @@ runs:
     - name: Checkout Code
       uses: actions/checkout@v4
       with:
-        fetch-depth: 0 
+        fetch-depth: 1
 
     - name: Set Up Node.js
       uses: actions/setup-node@v4
       with:
         node-version: 21
         cache: "npm"
-
-    - name: Get NPM Cache directory
-      id: npm-cache
-      run: echo "dir=$(npm config get cache)" >> $GITHUB_OUTPUT
-      shell: bash
+        cache-dependency-path: package-lock.json
 
     - name: Cache NPM Dependencies
       uses: actions/cache@v4
       with:
-        path: ${{ steps.npm-cache.outputs.dir }}
-        key: ${{ runner.os }}-npm-${{ hashFiles('package.json', 'package-lock.json') }}
+        path: ~/.npm
+        key: npm-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
         restore-keys: |
-          ${{ runner.os }}-npm-
+          npm-${{ runner.os }}-
+          npm-
 
     - name: Install Dependencies
       run: |
-        if [ "$DEV_DEPENDENCIES" = "true" ]; then
-          npm install
+        if [[ -d "node_modules" ]]; then
+          echo "Using cached dependencies"
         else
-          npm install --production
+          if [[ "$(echo "${{ inputs.DEV_DEPENDENCIES }}" | tr '[:upper:]' '[:lower:]')" == "true" ]]; then
+            npm install
+          else
+            npm install --production
+          fi
         fi
-      env:
-        DEV_DEPENDENCIES: ${{ inputs.DEV_DEPENDENCIES }}
       shell: bash
 
     - name: Run Build Script
