@@ -10,7 +10,7 @@ runs:
     - name: Checkout Code
       uses: actions/checkout@v4
       with:
-        fetch-depth: 1
+        fetch-depth: 0
 
     - name: Set Up Node.js
       uses: actions/setup-node@v4
