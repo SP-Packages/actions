@@ -23,6 +23,9 @@ jobs:
         with:
           DEV_DEPENDENCIES: true
 
+      - name: Zip the dist folder
+        run: zip -r dist.zip dist/
+
       - name: Run Semantic Release
         run: npx semantic-release --dry-run=${{ inputs.DRY_RUN }}
         env:

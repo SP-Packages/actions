@@ -18,6 +18,7 @@ runs:
         node-version: 21
         cache: "npm"
         cache-dependency-path: package-lock.json
+        registry-url: "https://registry.npmjs.org/"
 
     - name: Cache NPM Dependencies
       uses: actions/cache@v4
