@@ -43,6 +43,7 @@ jobs:
         with:
           fail_ci_if_error: true
           files: ./coverage/lcov.info
+          flags: cli, core, utils, tests
           verbose: true
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
