@@ -2,6 +2,11 @@ name: Code Quality
 
 on:
   workflow_call:
+
+    inputs:
+      slug:
+        required: true
+        type: string
     secrets:
       CODECOV_TOKEN:
         required: true
@@ -45,5 +50,6 @@ jobs:
           files: ./coverage/lcov.info
           flags: cli, core, utils, tests
           verbose: true
+          slug: ${{ inputs.slug }}
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
