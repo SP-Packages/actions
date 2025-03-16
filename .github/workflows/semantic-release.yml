@@ -26,6 +26,9 @@ jobs:
       - name: Zip the dist folder
         run: zip -r dist.zip dist/
 
+      - name: Debug permissions
+        run: ls -l node_modules/.bin/lintrc && whoami && echo $PATH
+
       - name: Run Semantic Release
         run: npx semantic-release --dry-run=${{ inputs.DRY_RUN }}
         env:
