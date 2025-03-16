@@ -2,7 +2,6 @@ name: Code Quality
 
 on:
   workflow_call:
-
     inputs:
       slug:
         required: true
@@ -19,6 +18,10 @@ jobs:
         uses: SP-Packages/actions/.github/actions/setup-environment@main
         with:
           DEV_DEPENDENCIES: true
+
+      - name: Run LintRC
+        run: npx lintrc
+        continue-on-error: true
 
       - name: Run ESLint
         run: npx eslint . --max-warnings=0
