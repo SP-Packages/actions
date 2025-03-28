@@ -72,5 +72,6 @@ runs:
       shell: bash
 
     - name: Run Build Script
+      if: ${{ inputs.SETUP_NODE == 'true' && inputs.INSTALL_DEV_DEPENDENCIES == 'true' }}
       run: npm run build
       shell: bash
