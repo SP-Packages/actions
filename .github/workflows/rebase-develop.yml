@@ -2,19 +2,15 @@ name: Rebase Develop
 
 on:
   workflow_call:
-    secrets:
-      GH_TOKEN:
-        required: true
 
 jobs:
   rebase-develop:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Setup Environment
+        uses: SP-Packages/actions/.github/actions/setup-environment@main
         with:
-          token: ${{ secrets.GH_TOKEN }}
-          fetch-depth: 0
+          FETCH_DEPTH: 0
 
       - name: Configure Git
         run: |

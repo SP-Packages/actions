@@ -18,10 +18,13 @@ jobs:
   semantic-release:
     runs-on: ubuntu-latest
     steps:
-      - name: Set Up Environment
+      - name: Setup Environment
         uses: SP-Packages/actions/.github/actions/setup-environment@main
         with:
-          DEV_DEPENDENCIES: true
+          FETCH_DEPTH: 0
+          SETUP_NODE: true
+          INSTALL_DEPENDENCIES: true
+          INSTALL_DEV_DEPENDENCIES: true
 
       - name: Zip the dist folder
         run: zip -r dist.zip dist/

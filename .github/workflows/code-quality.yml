@@ -3,9 +3,13 @@ name: Code Quality
 on:
   workflow_call:
     inputs:
-      slug:
-        required: true
+      VERBOSE:
+        type: boolean
+        default: false
+        required: false
+      SLUG:
         type: string
+        required: true
     secrets:
       CODECOV_TOKEN:
         required: true
@@ -13,35 +17,21 @@ on:
 jobs:
   code-quality:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [18, 20, 21]
     steps:
-      - name: Set Up Environment
+      - name: Setup Environment
         uses: SP-Packages/actions/.github/actions/setup-environment@main
         with:
-          DEV_DEPENDENCIES: true
+          FETCH_DEPTH: 0
+          SETUP_NODE: true
+          INSTALL_DEPENDENCIES: true
+          INSTALL_DEV_DEPENDENCIES: true
+          NODE_VERSION: ${{ matrix.node }}
 
       - name: Run LintRC
-        run: npx lintrc
-        continue-on-error: true
-
-      - name: Run ESLint
-        run: npx eslint . --max-warnings=0
-        continue-on-error: true
-
-      - name: Run Prettier
-        run: npx prettier --check .
-        continue-on-error: true
-
-      - name: Run cspell (spell-check)
-        run: npx cspell "**/*.{ts,js,json,md}"
-        continue-on-error: true
-
-      - name: Run TypeScript
-        run: npx tsc --noEmit
-        continue-on-error: true
-
-      - name: Run Commitlint
-        run: npx commitlint --from=origin/main --to=HEAD --verbose
-        continue-on-error: true
+        run: npx @sp-packages/lintrc ${{ inputs.VERBOSE && '--verbose' || '' }}
 
       - name: Run Tests
         run: npm run test:coverage
@@ -53,6 +43,6 @@ jobs:
           files: ./coverage/lcov.info
           flags: cli, core, utils, tests
           verbose: true
-          slug: ${{ inputs.slug }}
+          slug: ${{ inputs.SLUG }}
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
