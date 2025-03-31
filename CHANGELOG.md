@@ -1,3 +1,9 @@
+## [1.1.1](https://github.com/SP-Packages/actions/compare/v1.1.0...v1.1.1) (2025-03-31)
+
+### Bug Fixes
+
+* **workflows:** set default value of PREPARE_DEST_DIR to true ([38d7925](https://github.com/SP-Packages/actions/commit/38d7925aa0f5dac39540a44d408d2fe3e13f6b99))
+
 ## [1.1.0](https://github.com/SP-Packages/actions/compare/v1.0.0...v1.1.0) (2025-03-31)
 
 ### Features
