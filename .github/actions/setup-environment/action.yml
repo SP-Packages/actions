@@ -70,8 +70,3 @@ runs:
           npm ci --omit=dev
         fi
       shell: bash
-
-    - name: Run Build Script
-      if: ${{ inputs.SETUP_NODE == 'true' && inputs.INSTALL_DEV_DEPENDENCIES == 'true' }}
-      run: npm run build
-      shell: bash

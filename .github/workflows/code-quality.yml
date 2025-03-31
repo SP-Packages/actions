@@ -9,10 +9,10 @@ on:
         required: false
       SLUG:
         type: string
-        required: true
+        required: false
     secrets:
       CODECOV_TOKEN:
-        required: true
+        required: false
 
 jobs:
   code-quality:
@@ -34,10 +34,14 @@ jobs:
         run: npx @sp-packages/lintrc ${{ inputs.VERBOSE && '--verbose' || '' }}
 
       - name: Run Tests
+        if: inputs.SLUG && env.CODECOV_TOKEN
         run: npm run test:coverage
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v5
+        if: inputs.SLUG && env.CODECOV_TOKEN
         with:
           fail_ci_if_error: true
           files: ./coverage/lcov.info

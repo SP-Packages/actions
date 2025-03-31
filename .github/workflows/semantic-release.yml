@@ -7,6 +7,10 @@ on:
         type: boolean
         required: false
         default: false
+      RUN_BUILD:
+        type: boolean
+        required: false
+        default: true
 
     secrets:
       GH_TOKEN:
@@ -26,7 +30,13 @@ jobs:
           INSTALL_DEPENDENCIES: true
           INSTALL_DEV_DEPENDENCIES: true
 
+      - name: Run Build Script
+        if: ${{ inputs.RUN_BUILD == 'true' }}
+        run: npm run build
+        shell: bash
+
       - name: Zip the dist folder
+        if: ${{ inputs.RUN_BUILD == 'true' }}
         run: zip -r dist.zip dist/
 
       - name: Run Semantic Release
