@@ -1,6 +1,6 @@
 export default {
   branches: ["main"],
-  repositoryUrl: "https://github.com/SP-Packages/lintrc.git",
+  repositoryUrl: "https://github.com/SP-Packages/actions.git",
   plugins: [
     [
       "@semantic-release/commit-analyzer",
