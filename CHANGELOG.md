@@ -1,3 +1,9 @@
+## [1.1.0](https://github.com/SP-Packages/actions/compare/v1.0.0...v1.1.0) (2025-03-31)
+
+### Features
+
+* **workflows:** refactor labeler workflow to use a separate file ([65c9aad](https://github.com/SP-Packages/actions/commit/65c9aad42b7449dff56c2e3fffb1c41b1efd3ab2))
+
 ## 1.0.0 (2025-03-31)
 
 ### Features
