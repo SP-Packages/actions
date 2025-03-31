@@ -10,7 +10,7 @@ on:
       PREPARE_DEST_DIR:
         type: boolean
         required: false
-        default: false
+        default: true
 
     secrets:
       GH_TOKEN:
