@@ -1,0 +1,48 @@
+name: Code Testing
+
+on:
+  workflow_call:
+    inputs:
+      SLUG:
+        type: string
+        required: false
+    secrets:
+      CODECOV_TOKEN:
+        required: false
+
+jobs:
+  code-testing:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [18, 20, 21]
+    steps:
+      - name: Setup Environment
+        uses: SP-Packages/actions/.github/actions/setup-environment@main
+        with:
+          FETCH_DEPTH: 0
+          SETUP_NODE: true
+          INSTALL_DEPENDENCIES: true
+          INSTALL_DEV_DEPENDENCIES: true
+          NODE_VERSION: ${{ matrix.node }}
+
+      - name: Run Tests
+        run: npm run test
+
+      - name: Run Tests Coverage
+        if: inputs.SLUG && env.CODECOV_TOKEN
+        run: npm run test:coverage
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v5
+        if: inputs.SLUG && env.CODECOV_TOKEN
+        with:
+          fail_ci_if_error: true
+          files: ./coverage/lcov.info
+          flags: cli, core, utils, tests
+          verbose: true
+          slug: ${{ inputs.SLUG }}
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

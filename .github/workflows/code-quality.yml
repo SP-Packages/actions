@@ -7,12 +7,6 @@ on:
         type: boolean
         default: false
         required: false
-      SLUG:
-        type: string
-        required: false
-    secrets:
-      CODECOV_TOKEN:
-        required: false
 
 jobs:
   code-quality:
@@ -32,21 +26,3 @@ jobs:
 
       - name: Run LintRC
         run: npx @sp-packages/lintrc ${{ inputs.VERBOSE && '--verbose' || '' }}
-
-      - name: Run Tests
-        if: inputs.SLUG && env.CODECOV_TOKEN
-        run: npm run test:coverage
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v5
-        if: inputs.SLUG && env.CODECOV_TOKEN
-        with:
-          fail_ci_if_error: true
-          files: ./coverage/lcov.info
-          flags: cli, core, utils, tests
-          verbose: true
-          slug: ${{ inputs.SLUG }}
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
