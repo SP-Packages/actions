@@ -1,0 +1,21 @@
+name: PR Labeler
+
+on:
+  workflow_call:
+
+jobs:
+  pr-labeler:
+    permissions:
+      contents: read
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Environment
+        uses: SP-Packages/actions/.github/actions/setup-environment@main
+        with:
+          FETCH_DEPTH: 0
+
+      - name: Labeler
+        uses: actions/labeler@v5
+        with:
+          sync-labels: true
