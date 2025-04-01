@@ -29,7 +29,9 @@ jobs:
       - name: Run Build Script
         run: |
           npm run build
-          zip -r dist.zip dist/
+          if [ -d "dist" ]; then
+            zip -r dist.zip dist/
+          fi
         shell: bash
 
       - name: Run Semantic Release
