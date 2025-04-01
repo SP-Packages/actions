@@ -31,7 +31,7 @@ jobs:
           INSTALL_DEV_DEPENDENCIES: true
 
       - name: Run Build Script
-        if: ${{ inputs.PREPARE_DEST_DIR == 'true' }}
+        if: ${{ inputs.PREPARE_DEST_DIR != false }}
         run: |
           npm run build
           zip -r dist.zip dist/
