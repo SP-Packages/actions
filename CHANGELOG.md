@@ -1,3 +1,11 @@
+## [1.1.2](https://github.com/SP-Packages/actions/compare/v1.1.1...v1.1.2) (2025-04-01)
+
+### Bug Fixes
+
+* **workflows:** add check for dist directory before zipping ([3b530a9](https://github.com/SP-Packages/actions/commit/3b530a90dbf801d96ab8e829d07f48e8a86adb4d))
+* **workflows:** remove PREPARE_DEST_DIR input and adjust build script ([9e55d59](https://github.com/SP-Packages/actions/commit/9e55d59cce4b89a809d3f26b9b2cb98c63445c8f))
+* **workflows:** update condition for running build script ([12d3541](https://github.com/SP-Packages/actions/commit/12d354127e9d31fc1542e91c01ff5691e01a8fea))
+
 ## [1.1.1](https://github.com/SP-Packages/actions/compare/v1.1.0...v1.1.1) (2025-03-31)
 
 ### Bug Fixes
