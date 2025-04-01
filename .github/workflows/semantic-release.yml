@@ -7,10 +7,6 @@ on:
         type: boolean
         required: false
         default: false
-      PREPARE_DEST_DIR:
-        type: boolean
-        required: false
-        default: true
 
     secrets:
       GH_TOKEN:
@@ -31,7 +27,6 @@ jobs:
           INSTALL_DEV_DEPENDENCIES: true
 
       - name: Run Build Script
-        if: ${{ inputs.PREPARE_DEST_DIR != false }}
         run: |
           npm run build
           zip -r dist.zip dist/
