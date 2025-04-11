@@ -1,3 +1,9 @@
+## [1.1.3](https://github.com/SP-Packages/actions/compare/v1.1.2...v1.1.3) (2025-04-11)
+
+### Bug Fixes
+
+* **workflows:** update permissions for release and pr-labeler jobs ([56fbb14](https://github.com/SP-Packages/actions/commit/56fbb14f1d018c09f20d9fe0f1b21e711c7bf23c))
+
 ## [1.1.2](https://github.com/SP-Packages/actions/compare/v1.1.1...v1.1.2) (2025-04-01)
 
 ### Bug Fixes
