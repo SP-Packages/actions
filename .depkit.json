@@ -27,14 +27,14 @@
       "title": "Update PHP Dependencies",
       "command": "update",
       "type": "composer",
-      "behavior": "warn",
+      "behavior": "error",
       "priority": 4
     },
     "COMPOSER_OUTDATED": {
       "title": "Outdated PHP Dependencies",
       "command": "outdated",
       "type": "composer",
-      "behavior": "warn",
+      "behavior": "error",
       "priority": 5
     },
     "NPM_VERSION": {
@@ -58,7 +58,7 @@
       "prefix": "npx",
       "command": "depcheck",
       "type": "npm",
-      "behavior": "warn",
+      "behavior": "error",
       "requires": "depcheck",
       "priority": 8
     },
@@ -73,14 +73,14 @@
       "title": "Update NPM Packages",
       "command": "update",
       "type": "npm",
-      "behavior": "warn",
+      "behavior": "error",
       "priority": 10
     },
     "NPM_OUTDATED": {
       "title": "Outdated NPM Packages",
       "command": "outdated",
       "type": "npm",
-      "behavior": "warn",
+      "behavior": "error",
       "priority": 11
     }
   }
