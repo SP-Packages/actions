@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [18, 20, 21]
+        node: [20, 21]
     steps:
       - name: Setup Environment
         uses: SP-Packages/actions/.github/actions/setup-environment@main
