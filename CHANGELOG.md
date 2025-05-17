@@ -1,3 +1,11 @@
+## [1.1.4](https://github.com/SP-Packages/actions/compare/v1.1.3...v1.1.4) (2025-05-17)
+
+### Bug Fixes
+
+* **dependencies:** change behavior to error instead of warning ([dbaa27f](https://github.com/SP-Packages/actions/commit/dbaa27f8ce3881f7739b956a7a91fe8b8e312063))
+* **dependencies:** update dependencies ([a6fff2c](https://github.com/SP-Packages/actions/commit/a6fff2c1dd053f0d22cbbe47c83ac7da0c94ecfe))
+* **workflows:** remove Node 18 from testing and quality matrices ([30d6763](https://github.com/SP-Packages/actions/commit/30d67637e980d7f63f33eb46325886f1ec62193d))
+
 ## [1.1.3](https://github.com/SP-Packages/actions/compare/v1.1.2...v1.1.3) (2025-04-11)
 
 ### Bug Fixes
