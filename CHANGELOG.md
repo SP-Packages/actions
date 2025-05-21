@@ -1,3 +1,9 @@
+## [1.1.5](https://github.com/SP-Packages/actions/compare/v1.1.4...v1.1.5) (2025-05-21)
+
+### Bug Fixes
+
+* **dependencies:** update dependencies ([0c22154](https://github.com/SP-Packages/actions/commit/0c22154a5c9bcbc54460793b04225d90d44c986f))
+
 ## [1.1.4](https://github.com/SP-Packages/actions/compare/v1.1.3...v1.1.4) (2025-05-17)
 
 ### Bug Fixes
