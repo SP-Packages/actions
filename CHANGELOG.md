@@ -1,3 +1,10 @@
+## [1.1.7](https://github.com/SP-Packages/actions/compare/v1.1.6...v1.1.7) (2025-05-22)
+
+### Bug Fixes
+
+* **actions:** standardize quotes and update configuration files ([8312912](https://github.com/SP-Packages/actions/commit/8312912e07fde1e14684e9245da19e8f3c833eff))
+* **dependabot:** change update schedule from daily to weekly ([5f0d7be](https://github.com/SP-Packages/actions/commit/5f0d7be9290b53707cb55f9d5597df0dd5d65926))
+
 ## [1.1.6](https://github.com/SP-Packages/actions/compare/v1.1.5...v1.1.6) (2025-05-22)
 
 ### Bug Fixes
