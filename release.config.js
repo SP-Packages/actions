@@ -1,39 +1,41 @@
 export default {
-  branches: ["main"],
-  repositoryUrl: "https://github.com/SP-Packages/actions.git",
+  branches: ['main'],
+  repositoryUrl: 'https://github.com/SP-Packages/actions.git',
   plugins: [
     [
-      "@semantic-release/commit-analyzer",
+      '@semantic-release/commit-analyzer',
       {
-        preset: "conventionalcommits",
+        preset: 'conventionalcommits',
         releaseRules: [
           {
-            type: "build",
-            release: "patch",
-          },
-        ],
-      },
+            type: 'build',
+            release: 'patch'
+          }
+        ]
+      }
     ],
     [
-      "@semantic-release/release-notes-generator",
+      '@semantic-release/release-notes-generator',
       {
-        preset: "conventionalcommits",
-      },
+        preset: 'conventionalcommits'
+      }
     ],
-    "@semantic-release/changelog",
+    '@semantic-release/changelog',
     [
-      "@semantic-release/exec",
+      '@semantic-release/exec',
       {
-        prepareCmd: "RELEASE_VERSION=${nextRelease.version} node ./release.update.js",
-      },
+        prepareCmd:
+          'RELEASE_VERSION=${nextRelease.version} node ./release.update.js'
+      }
     ],
     [
-      "@semantic-release/git",
+      '@semantic-release/git',
       {
-        assets: ["CHANGELOG.md", "package.json", "package-lock.json"],
-        message: "chore(release): v${nextRelease.version} [skip ci]\n\n${nextRelease.notes}",
-      },
+        assets: ['CHANGELOG.md', 'package.json', 'package-lock.json'],
+        message:
+          'chore(release): v${nextRelease.version} [skip ci]\n\n${nextRelease.notes}'
+      }
     ],
-    "@semantic-release/github",
-  ],
+    '@semantic-release/github'
+  ]
 };

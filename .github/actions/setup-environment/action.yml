@@ -5,35 +5,35 @@ inputs:
     required: false
     type: number
     default: 1
-    description: "Git fetch depth (0 for all history)"
+    description: 'Git fetch depth (0 for all history)'
   SETUP_NODE:
     required: false
     type: boolean
     default: false
-    description: "Set to true to include Node.js setup"
+    description: 'Set to true to include Node.js setup'
   NODE_VERSION:
     required: false
     type: string
-    default: "21"
-    description: "Node.js version to install"
+    default: '21'
+    description: 'Node.js version to install'
   CACHE_KEY_PREFIX:
     required: false
     type: string
-    default: "deps"
-    description: "Prefix for the cache key"
+    default: 'deps'
+    description: 'Prefix for the cache key'
   INSTALL_DEPENDENCIES:
     required: false
     type: boolean
     default: false
-    description: "Set to true to include dependency installation"
+    description: 'Set to true to include dependency installation'
   INSTALL_DEV_DEPENDENCIES:
     required: false
     type: boolean
     default: false
-    description: "Set to true to include dev dependencies"
+    description: 'Set to true to include dev dependencies'
 
 runs:
-  using: "composite"
+  using: 'composite'
   steps:
     - name: Checkout Code
       uses: actions/checkout@v4
@@ -45,7 +45,7 @@ runs:
       uses: actions/setup-node@v4
       with:
         node-version: ${{ inputs.NODE_VERSION }}
-        cache: "npm"
+        cache: 'npm'
         cache-dependency-path: package-lock.json
 
     - name: Cache Dependencies
