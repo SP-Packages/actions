@@ -1,3 +1,9 @@
+## [1.1.8](https://github.com/SP-Packages/actions/compare/v1.1.7...v1.1.8) (2025-07-25)
+
+### Bug Fixes
+
+* **actions:** add permissions for issues, contents, and pull requests ([52ed1e2](https://github.com/SP-Packages/actions/commit/52ed1e2889ed16183e66f9a50d1114db8e0551bd))
+
 ## [1.1.7](https://github.com/SP-Packages/actions/compare/v1.1.6...v1.1.7) (2025-05-22)
 
 ### Bug Fixes

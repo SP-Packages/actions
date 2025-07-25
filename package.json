@@ -1,7 +1,7 @@
 {
   "name": "@sp-packages/actions",
   "description": "This repository provides a collection of reusable workflows for GitHub Actions",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "type": "module",
   "license": "MIT",
   "author": {
